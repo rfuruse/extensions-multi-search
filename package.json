@@ -1,0 +1,21 @@
+{
+  "name": "extensions-multi-search",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "NYSL",
+  "scripts": {
+    "build": "rm -rf dist;tsx bin/build.ts",
+    "files": "bin/files.sh"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.43",
+    "@types/encoding-japanese": "^2.2.1",
+    "@types/node": "^26.0.0",
+    "archiver": "^8.0.0",
+    "bulma": "^1.0.4",
+    "encoding-japanese": "^2.2.0",
+    "sass": "^1.101.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}

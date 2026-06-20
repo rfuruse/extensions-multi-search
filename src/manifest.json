@@ -1,0 +1,23 @@
+{
+  "name": "Multi Search",
+  "description": "Search multiple engines simultaneously",
+  "action": {},
+  "version": "0.1",
+  "manifest_version": 3,
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "contextMenus",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "omnibox": {
+    "keyword": "ms"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  }
+}

@@ -1,0 +1,246 @@
+@use "bulma/sass" with (
+  $primary: #3273dc,
+  $radius: 6px,
+  $radius-large: 8px
+);
+
+// ---- ローカル変数 ----
+$primary: #3273dc;
+$radius-large: 8px;
+
+// ---- レイアウト ----
+body {
+  background: #f7f9fc;
+  min-height: 100vh;
+}
+
+.ms-header {
+  background: #fff;
+  border-bottom: 1px solid #e8ecf0;
+  padding: 0 1.5rem;
+
+  .ms-header__inner {
+    max-width: 860px;
+    margin: 0 auto;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .ms-header__logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $primary;
+    letter-spacing: -0.02em;
+  }
+
+  .ms-header__sub {
+    font-size: 0.8rem;
+    color: #8a9bb0;
+  }
+}
+
+.ms-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+// ---- ドラッグ＆ドロップ オーバーレイ ----
+.ms-drop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba($primary, 0.9);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+
+  &.is-active {
+    opacity: 1;
+  }
+}
+
+// ---- エンジンカード ----
+.ms-engine-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.ms-engine-card {
+  background: #fff;
+  border: 1px solid #e8ecf0;
+  border-radius: $radius-large;
+  padding: 1rem 1.25rem;
+  transition: box-shadow 0.15s;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  }
+
+  &.is-disabled {
+    background: #f7f9fc;
+    opacity: 0.6;
+  }
+}
+
+.ms-engine-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.ms-engine-card__drag {
+  color: #c0cad6;
+  cursor: grab;
+  font-size: 1.1rem;
+  user-select: none;
+
+  &:active { cursor: grabbing; }
+}
+
+.ms-engine-card__toggle {
+  appearance: none;
+  width: 36px;
+  height: 20px;
+  background: #d0d9e4;
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 0.2s;
+  }
+
+  &:checked {
+    background: $primary;
+    &::after { transform: translateX(16px); }
+  }
+}
+
+.ms-engine-card__label-input {
+  flex: 1;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  background: #f4f7fa;
+  color: #363636;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #eef2f7;
+    border-color: #e8ecf0;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    background: #ffffff;
+    box-shadow: 0 0 0 0.125em rgba($primary, 0.25);
+  }
+}
+
+.ms-engine-card__body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ms-engine-card__url {
+  font-size: 0.85rem;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  color: #363636;
+  background-color: #f4f7fa;
+  border-color: #e8ecf0;
+
+  &:hover {
+    border-color: #c0cad6;
+  }
+
+  &:focus {
+    background-color: #ffffff;
+    border-color: $primary;
+  }
+}
+
+.ms-engine-card__encode select {
+  background-color: #f4f7fa;
+  color: #363636;
+  border-color: #e8ecf0;
+
+  &:hover {
+    border-color: #c0cad6;
+  }
+
+  &:focus {
+    background-color: #ffffff;
+    border-color: $primary;
+  }
+}
+
+.ms-engine-card__delete {
+  color: #c0cad6;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0 0.25rem;
+  margin-left: auto;
+  transition: color 0.15s;
+
+  &:hover { color: #f14668; }
+}
+
+// ---- アクションエリア ----
+.ms-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.ms-status {
+  font-size: 0.85rem;
+  color: #48c774;
+  margin-left: auto;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  &.is-visible { opacity: 1; }
+}
+
+// ---- セクションタイトル ----
+.ms-section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8a9bb0;
+  margin-bottom: 0.75rem;
+}

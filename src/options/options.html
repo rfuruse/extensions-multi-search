@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi Search - 設定</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <!-- ドラッグ＆ドロップ時のオーバーレイ -->
+    <div id="drop-overlay" class="ms-drop-overlay">
+      <span>JSONファイルをドロップしてインポート</span>
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="ms-header">
+      <div class="ms-header__inner">
+        <span class="ms-header__logo">🔍 Multi Search</span>
+        <span class="ms-header__sub">検索エンジン設定</span>
+      </div>
+    </header>
+
+    <div class="ms-container">
+      <div class="ms-section-title">
+        検索エンジン
+        <span
+          id="enabled-count"
+          class="tag is-light is-info"
+          style="margin-left: 0.5rem; font-size: 0.7rem"
+        >
+          0 / 0 有効
+        </span>
+      </div>
+
+      <!-- エンジンリスト（JSで動的に追加される場所） -->
+      <div class="ms-engine-list" id="engine-list"></div>
+
+      <!-- アクション -->
+      <div class="ms-actions">
+        <button id="btn-add" class="button is-primary is-light is-small">
+          ＋ 追加
+        </button>
+        <button id="btn-save" class="button is-primary is-small">保存</button>
+        <button id="btn-reset" class="button is-light is-small">
+          リセット
+        </button>
+        <button id="btn-export" class="button is-link is-light is-small">
+          エクスポート
+        </button>
+        <button id="btn-import" class="button is-link is-light is-small">
+          インポート
+        </button>
+        <input
+          type="file"
+          id="file-import"
+          accept=".json"
+          style="display: none"
+        />
+        <span id="status-msg" class="ms-status"></span>
+      </div>
+    </div>
+
+    <!-- エンジンカードのテンプレート -->
+    <template id="engine-card-template">
+      <div class="ms-engine-card">
+        <div class="ms-engine-card__header">
+          <span class="ms-engine-card__drag" title="ドラッグで並び替え">⠿</span>
+          <input type="checkbox" class="ms-engine-card__toggle" />
+          <input
+            type="text"
+            class="ms-engine-card__label-input"
+            placeholder="ラベル"
+          />
+          <button class="ms-engine-card__delete" title="削除">✕</button>
+        </div>
+        <div class="ms-engine-card__body">
+          <input
+            type="url"
+            class="input is-small ms-engine-card__url"
+            placeholder="https://example.com/search?q=%s"
+          />
+          <div class="select is-small ms-engine-card__encode">
+            <select>
+              <option value="UTF8">UTF-8</option>
+              <option value="SJIS">SJIS</option>
+              <option value="EUCJP">EUC-JP</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script type="module" src="options.js"></script>
+  </body>
+</html>
