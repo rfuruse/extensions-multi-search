@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- 背景（Bulmaの$primary色に合わせて角丸で塗りつぶし） -->
+  <rect width="128" height="128" rx="28" fill="#FFC0CB"/>
+  
+  <!-- 重なる検索窓/虫眼鏡を表現 -->
+  <!-- 奥の虫眼鏡 (半透明) -->
+  <circle cx="50" cy="50" r="22" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="12"/>
+  <line x1="66" y1="66" x2="84" y2="84" stroke="rgba(255,255,255,0.5)" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- 手前の虫眼鏡 -->
+  <circle cx="68" cy="68" r="22" fill="none" stroke="#ffffff" stroke-width="12"/>
+  <line x1="84" y1="84" x2="106" y2="106" stroke="#ffffff" stroke-width="12" stroke-linecap="round"/>
+</svg>

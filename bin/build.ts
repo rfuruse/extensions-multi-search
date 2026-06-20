@@ -1,6 +1,7 @@
 import { BuildOptions, context, build } from 'esbuild';
 import { sassPlugin } from './plugins/esbuild-plugin-sass';
 import { copyAssetsPlugin } from './plugins/esbuild-plugin-copy-assets';
+import { svgToPngPlugin } from './plugins/esbuild-plugin-svg2png';
 import { resolve } from 'path';
 
 const isWatch = process.argv.includes('--watch');
@@ -31,6 +32,11 @@ const buildOptions: BuildOptions = {
         { src: 'src/manifest.json', dst: 'dist/manifest.json' },
         { src: 'src/options/options.html', dst: 'dist/options/options.html' },
       ],
+    }),
+    svgToPngPlugin({
+      src: 'src/icons/icon.svg',
+      outDir: 'dist/icons',
+      sizes: [16, 48, 128],
     }),
   ],
 };
